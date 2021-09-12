@@ -1,38 +1,26 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema } = require('mongoose');
+const postSchema = require('./Post');
 
-class Vote extends Model {}
-
-Vote.init(
+const voteSchema = new Schema(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        post_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'post',
-                key: 'id'
-            }
-            }
+       voteButton: {
+            type: 'button',
+            required: true
+       },
+       username: {
+           type: String,
+           required: true
+       },
+       postText: {
+           required: true
+       },
+       posts: [postSchema]
     },
     {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'vote'
-    });
+        toJSON: {
+            getters: true
+        }
+    }
+);
 
-    module.exports = Vote;
+module.exports = voteSchema;

@@ -1,41 +1,35 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment');
+const voteSchema = require('./Votes');
+const dateFormat = require('../utils/dateFormat');
 
-class Post extends Models{}
-
-Post.init(
+const postSchema = new Schema (
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+        postText: {
+            type: String,
+            required: false,
+            minlength: 1,
+            maxlength: 240
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timeStamp => dateFormat(timeStamp)
         },
-        post_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
-            }
+        username: {
+            type: String,
+            required: true
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'User',
-                key: 'id'
-            }
-        }
+        comments: [commentSchema],
+        votes: [voteSchema]
     },
     {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'post'
+        toJSON: {
+            getters: true
+        }
     }
 );
+
+const Post = model('Post', postSchema);
 
 module.exports = Post;
