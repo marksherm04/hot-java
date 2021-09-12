@@ -3,7 +3,7 @@ const { gql } = require ('apollo-server-express');
 const typeDefs = gql`
   type Post {
     _id: ID
-    postText: string
+    postText: String
     createdAt: String
     username: String
     commentCount: Int
@@ -27,10 +27,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user: [User]
-    user:(username: String!): User
+    users: [User]
+    user(username: String!): User
     posts(username: String): [Post]
-    comment(_id: ID!): Comment
+    post(_id: ID!): Post
   }
 
   type Mutation {
