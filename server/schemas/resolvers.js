@@ -1,6 +1,6 @@
 const { User, Post } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
-// const { signToken } = require('../utils/auth);
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -56,8 +56,31 @@ const resolvers = {
       return { token, user };
     },
     // add post
+    addPost: async (parent, args, context) => {
+      if (context.user) {
+        const post = await Post.create({ ...args, username: context.user.username });
 
+        await Post.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        );
+        return post;
+      }
+      throw new AuthenticationError('Must be logged in to make a new post!');
+    },
     // add comment
+    addComment: async (parent, { postId, commentBody }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { comments: { commentBody, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+        return updatedPost;
+      }
+      throw new AuthenticationError('Must be logged in to add a comment!');
+    }
   }
 };
 
