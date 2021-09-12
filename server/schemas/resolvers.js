@@ -15,12 +15,26 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     // get all posts
-
+    posts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Post.find(params).sort({ createdAt: -1 });
+    },
     // get single post by id
-
+    post: async (parent, { _id }) => {
+      return Post.findOne({ _id });
+    },
     // get all users
-
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('posts');
+    },
     // get user by username
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('posts');
+    },
   },
 
   Mutation: {
@@ -31,7 +45,16 @@ const resolvers = {
       return { token, user };
     },
     // login
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
+      if (!user) {
+        throw new AuthenticationError('Wrong email or password!');
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
     // add post
 
     // add comment
