@@ -4,7 +4,7 @@ const postSchema = require('./Post');
 const voteSchema = new Schema(
     {
        voteButton: {
-            type: 'button',
+            type: Boolean,
             required: true
        },
        username: {
@@ -12,6 +12,7 @@ const voteSchema = new Schema(
            required: true
        },
        postText: {
+           type: String,
            required: true
        },
        posts: [postSchema]
