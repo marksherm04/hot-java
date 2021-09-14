@@ -5,14 +5,15 @@ import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
 import Preferences from './components/Preferences/Preferences';
+import Signup from './pages/Signup';
 
 
 function App() {
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
   
   return (
     <div className="wrapper">
@@ -22,6 +23,7 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
+          <Route path="/signup" component={Signup} />
           <Route path="/preferences">
             <Preferences />
           </Route>
