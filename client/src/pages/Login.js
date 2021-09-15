@@ -11,7 +11,7 @@ async function loginUser(credentials) {
 		},
 		body: JSON.stringify(credentials)
 	})
-	.then(data => data.json())
+		.then(data => data.json())
 }
 
 export default function Login({ setToken }) {
@@ -20,7 +20,7 @@ export default function Login({ setToken }) {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		const token = await loginUser({ 
+		const token = await loginUser({
 			username,
 			password
 		});
@@ -28,22 +28,26 @@ export default function Login({ setToken }) {
 	}
 
 	return (
+		<section>
+			
 		<div className="login-wrapper">
-			<h1>Login</h1>
+			<h2>Login</h2>
 			<form onSubmit={handleSubmit}>
 				<label>
 					<p>Username</p>
-					<input type="text" onChange={e => setUserName(e.target.value)}/>
+					<input type="text" onChange={e => setUserName(e.target.value)} />
 				</label>
 				<label>
 					<p>Password</p>
-					<input type="password" onChange={e => setPassword(e.target.value)}/>
+					<input type="password" onChange={e => setPassword(e.target.value)} />
 				</label>
 				<div>
+					<br></br>
 					<button type="submit">Submit</button>
 				</div>
 			</form>
 		</div>
+		</section>
 	);
 }
 
