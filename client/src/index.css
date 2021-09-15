@@ -26,10 +26,10 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inconsolata', monospace;
-  font-weight: 400;
-  line-height: 1.5;
-  font-size: 20px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  font-size: 28px;
   color: var(--dark);
   background-color: #f3fffee1;
 }
@@ -40,14 +40,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Karla', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   margin: 5px 0;
   line-height: 1.25;
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 h2 {
@@ -109,13 +109,13 @@ nav a:hover {
 
 .btn,
 .pill {
-  font-size: 1.3rem;
+  font-size: 18px;
   text-decoration: none;
-  padding: 0.5rem 1.2rem;
-  margin: 5px 0;
-  border-radius: var(--border-radius);
-  border: none;
-  color: var(--dark);
+  padding: 1rem 1.2rem;
+  margin: 8px 0;
+  border-radius: teal;
+  border: 1px;
+  color: white;
   outline: none;
   background-color: var(--secondary);
   transition: all 0.5s;
@@ -123,7 +123,7 @@ nav a:hover {
 
 .btn:hover,
 .pill:hover {
-  color: var(--dark);
+  color: teal;
   background-color: var(--dark);
 }
 
@@ -133,24 +133,25 @@ nav a:hover {
 
 /* CARDS */
 .card {
-  margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
+  margin: 48px 0 20px 0;
+  border: 6px solid var(--dark);
   border-radius: var(--border-radius);
-  background-color: var(--light);
-  color: var(--dark);
+  background-color: var(--tertiary);
 }
 
 .card-header {
   color: var(--secondary);
   margin: 0;
   background-color: var(--dark);
+  font-size: 20px;
+  text-align: center;
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
 .card-body {
   padding: 2.5%;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
 }
 
 /* FORM */
@@ -167,8 +168,8 @@ nav a:hover {
 
 .form-input {
   width: 100%;
-  padding: 0.75rem;
-  margin: 0.2rem 0;
+  padding: 1.25rem;
+  margin: 1rem 0;
   font-size: 1.2rem;
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
