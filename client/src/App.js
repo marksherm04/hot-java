@@ -8,22 +8,19 @@ import Login from './components/Login/Login';
 import Signup from './pages/Signup';
 
 function App() {
-  // const [token, setToken] = useState();
-
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
-
   return (
     <div className="App">
+      <Navbar />
       <Router>
-        <Navbar />
+        
         <Switch>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
+          {/* NEED TO EDIT SIGNUP PATH SO IT WORKS */}
+          <Route path="/singup" pages={Signup} />
         </Switch>
       </Router>
     </div>
