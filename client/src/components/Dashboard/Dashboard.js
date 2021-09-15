@@ -8,9 +8,8 @@ function Dashboard(props) {
   }
  
   return (
-    <div>
-      Welcome User!<br /><br />
-      <input type="button" onClick={handleLogout} value="Logout" />
+    <div className="shops">
+      <h1>My Favorite Shops</h1>
     </div>
   );
 }
