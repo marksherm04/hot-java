@@ -11,11 +11,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Dashboard />
       <Router>
-        
         <Switch>
           <Route path="/dashboard">
-            <Dashboard />
           </Route>
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
