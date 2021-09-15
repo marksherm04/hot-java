@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
-const commentForm = ({ commentId }) => {
+const CommentForm = ({ commentId }) => {
   const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addComment, { error }] = useMutation(ADD_COMMENT);
@@ -45,4 +45,4 @@ const commentForm = ({ commentId }) => {
     </div>
   )
 }
-export default commentForm;
+export default CommentForm;

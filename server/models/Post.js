@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
-const voteSchema = require('./Votes');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema (
@@ -20,8 +19,7 @@ const postSchema = new Schema (
             type: String,
             required: true
         },
-        comments: [commentSchema],
-        votes: [voteSchema]
+        comments: [commentSchema]
     },
     {
         toJSON: {
