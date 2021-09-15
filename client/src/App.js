@@ -5,9 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
-import Preferences from './components/Preferences/Preferences';
 import Signup from './pages/Signup';
-
 
 function App() {
   // const [token, setToken] = useState();
@@ -15,20 +13,17 @@ function App() {
   // if(!token) {
   //   return <Login setToken={setToken} />
   // }
-  
+
   return (
-    <div className="wrapper">
+    <div className="App">
       <Router>
+        <Navbar />
         <Switch>
-          <Navbar>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/signup" component={Signup} />
-          <Route path="/preferences">
-            <Preferences />
-          </Route>
-          </Navbar >
+          <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     </div>

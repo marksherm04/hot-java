@@ -16,7 +16,7 @@ class Navbar extends Component {
 				<h1 className="logo-photo"><img 
 					src={process.env.PUBLIC_URL + '/assets/images/hot-java-dark.jpg'}
 					alt="logo"
-					width="33%"
+					width="40%"
 					text-align="center"
 					/></h1>
 				<div className="menu-icon" onClick={this.handleClick}>

@@ -1,7 +1,17 @@
 import React from 'react';
-
-export default function Dashboard() {
-	return(
-		<h2>Dashboard</h2>
-	);
+ 
+function Dashboard(props) {
+ 
+  // handle click event of logout button
+  const handleLogout = () => {    
+    props.history.push('/login');
+  }
+ 
+  return (
+    <div className="shops">
+      <h1>My Favorite Shops</h1>
+    </div>
+  );
 }
+ 
+export default Dashboard;
