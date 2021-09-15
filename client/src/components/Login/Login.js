@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import './Login.css';
 
-
 async function loginUser(credentials) {
 	return fetch('http://localhost:3000/login', {
 		method: 'POST',
@@ -32,20 +31,6 @@ export default function Login({ setToken }) {
 		<section>
 			
 		<div className="login-wrapper">
-			<navbar className="header">
-				<div>
-				<img 
-					src={process.env.PUBLIC_URL + '/assets/images/hot-java-dark.jpg'}
-					alt="logo"
-					width="33%"
-					text-align="center"
-					className="logo-photo"
-					/>
-					</div>
-					<div class="navigation">
-						
-					</div>
-			</navbar>
 			<h2>Login</h2>
 			<form onSubmit={handleSubmit}>
 				<label>
