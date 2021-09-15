@@ -3,21 +3,21 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 
 import './App.css';
-import Dashboard from './components/Dashboard/Dashboard';
-import Login from './components/Login/Login';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Dashboard />
+      <Profile />
       <Router>
         <Switch>
-          <Route path="/dashboard">
+          <Route path="/profile">
           </Route>
           <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/profile" component={Profile} />
           {/* NEED TO EDIT SIGNUP PATH SO IT WORKS */}
           <Route path="/singup" pages={Signup} />
         </Switch>
