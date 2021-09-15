@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
-<<<<<<< HEAD
-import Navbar from "./components/Navbar/Navbar";
-=======
 import Preferences from './components/Preferences/Preferences';
 import Signup from './pages/Signup';
->>>>>>> af9a427647579022d77ce205b4feda423af8b347
 
 
 function App() {
@@ -20,12 +18,9 @@ function App() {
   
   return (
     <div className="wrapper">
-      <h1>Hot Java</h1>
-<<<<<<< HEAD
-      <Navbar />
-=======
-      <BrowserRouter>
+      <Router>
         <Switch>
+          <Navbar>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
@@ -33,9 +28,9 @@ function App() {
           <Route path="/preferences">
             <Preferences />
           </Route>
+          </Navbar >
         </Switch>
-      </BrowserRouter>
->>>>>>> af9a427647579022d77ce205b4feda423af8b347
+      </Router>
     </div>
   );
 }
