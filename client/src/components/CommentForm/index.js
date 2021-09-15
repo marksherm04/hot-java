@@ -30,7 +30,7 @@ const commentForm = ({ commentId }) => {
 
     return (
         <div>
-            <p className={`m-0" ${characterCount === 280 ? 'text error' : ''}`}>
+            <p className={`m-0" ${characterCount === 250 ? 'text error' : ''}`}>
             Character Count: {characterCount}/250
             {error && <span className="ml-2">Something went wrong...</span>}
             </p>

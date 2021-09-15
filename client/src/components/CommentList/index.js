@@ -12,9 +12,9 @@ const CommentList = ({ comments }) => {
                comments.map(comments => (
                 <p className="pill mb-3" key={comment._id}>
                        {comments.commentBody} {'//'}
-                       <link to ={`profile/${comment.username}`}>
+                       <Link to ={`profile/${comment.username}`}>
                            {comment.username} on {comment.createdAt}
-                       </link>
+                       </Link>
                    </p>
                ))} 
             </div>
