@@ -1,5 +1,5 @@
 .NavbarItems {
-	background: linear-gradient(90deg, black, blue);
+	background-color: teal;
 	height: 80px;
 	display: flex;
 	justify-content: center;
@@ -9,7 +9,7 @@
 
 .logo-photo {
 	justify-self: start;
-	margin-left: 20px;
+	margin-left: 36px;
 	cursor: pointer;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .nav-links:hover {
-	background-color: purple;
+	background-color: #fbb040;
 	border-radius: 4px;
 	transition: all 0.2 ease-out;
 }
