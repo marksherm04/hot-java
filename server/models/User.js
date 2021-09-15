@@ -26,10 +26,10 @@ const userSchema = new Schema(
                 ref: 'Comment'
             }
         ],
-        votes: [
+        posts: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Votes'
+                ref: 'Post'
             }
         ]
     },

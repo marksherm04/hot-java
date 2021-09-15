@@ -1,56 +1,78 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
-import './Login.css';
+const Login = (props) => {
+	const [formState, setFormState] = useState({ email: '', password: '' });
 
-async function loginUser(credentials) {
-	return fetch('http://localhost:3000/login', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(credentials)
-	})
-		.then(data => data.json())
-}
+	const handleChange = (event) => {
+		const { name, value } = event.target;
 
-export default function Login({ setToken }) {
-	const [username, setUserName] = useState();
-	const [password, setPassword] = useState();
-
-	const handleSubmit = async e => {
-		e.preventDefault();
-		const token = await loginUser({
-			username,
-			password
+		setFormState({
+			...formState,
+			[name]: value,
 		});
-		setToken(token);
-	}
+	};
+
+	const [login, { error }] = useMutation(LOGIN_USER);
+
+	// submit the form
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const { data } = await login({
+				variables: { ...formState }
+			});
+
+			Auth.login(data.login.token);
+		} catch (err) {
+			console.log(err);
+		};
+
+		// clear form values
+		setFormState({
+			email: '',
+			password: ''
+		});
+	};
 
 	return (
-		<section>
-			
-		<div className="login-wrapper">
-			<h2>Login</h2>
-			<form onSubmit={handleSubmit}>
-				<label>
-					<p>Username</p>
-					<input type="text" onChange={e => setUserName(e.target.value)} />
-				</label>
-				<label>
-					<p>Password</p>
-					<input type="password" onChange={e => setPassword(e.target.value)} />
-				</label>
-				<div>
-					<br></br>
-					<button type="submit">Submit</button>
+		<main className='flex-row justify-center mb-4'>
+			<div className='col-12 col-md-6'>
+				<div className='card'>
+					<h4 className='card-header'>Login</h4>
+					<div className='card-body'>
+						<form onSubmit={handleFormSubmit}>
+							<input
+								className='form-input'
+								placeholder='Your email'
+								name='email'
+								type='email'
+								id='email'
+								value={formState.email}
+								onChange={handleChange}
+							/>
+							<input
+								className='form-input'
+								placeholder='******'
+								name='password'
+								type='password'
+								id='password'
+								value={formState.password}
+								onChange={handleChange}
+							/>
+							<button className='btn d-block w-100' type='submit'>
+								Submit
+							</button>
+						</form>
+						{error && <div>Login failed</div>}
+					</div>
 				</div>
-			</form>
-		</div>
-		</section>
+			</div>
+		</main>
 	);
-}
-
-Login.propTypes = {
-	setToken: PropTypes.func.isRequired
 };
+
+export default Login;
