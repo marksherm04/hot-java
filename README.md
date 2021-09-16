@@ -25,7 +25,7 @@ npm install
 ## Screenshot
 
 ## Contributing
-Mark Sherman, Ben Muchemi, James Crawley, Kyle
+Mark Sherman, Ben Muchemi, James Crawley, Kyle Todoran
 
 ## Tests
 Jest test
@@ -35,4 +35,4 @@ MIT
 
 ## Questions
 - Github Page: [marksherm04](https://github.com/marksherm04)
-- Email: marksherm04@gmail.com
+- Email: marksherm04@gmail.com, ktodoran@gmail.com, crawleyj2@gmail.com, bensonmuchemi70@gmail.com
