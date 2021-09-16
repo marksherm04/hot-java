@@ -21,6 +21,7 @@ This application allows users to list their favorite coffee shops and what their
 npm install
 
 ## Deployed
+hot-java.herokuapp.com
 
 ## Screenshot
 
